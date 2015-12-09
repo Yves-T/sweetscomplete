@@ -1,4 +1,18 @@
-<?php ?>
+<?php
+// quantity and price
+$qty1 = 11;
+$price1 = 1.10;
+$qty2 = 22;
+$price2 = 2.20;
+$qty3 = 33;
+$price3 = 3.30;
+$total = ($qty1 * $price1) + ($qty2 * $price2) + ($qty3 * $price3);
+// name, phone, etc
+$name = 'Joe';
+$phone = '212-555-1212';
+$fax = '212-777-8888';
+$email = 'doug@infiniteskills.com'
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -24,7 +38,7 @@
                         Cart</a>
                 </b>
                 <br/>
-                Welcome Guest
+                Welcome <?php print $name; ?>
             </div>
             <ul class="topmenu">
                 <li><a href="home.html">Home</a></li>
@@ -64,9 +78,9 @@
                                 </a>
                             </td>
                             <td> Ambrosia Salad</td>
-                            <td>Qty: <br/><input type="text" value="1" name="qty[]" class="s0" size="2"/></td>
-                            <td align="right"> 1.90</td>
-                            <td align="right"> 1.90</td>
+                            <td>Qty: <br/><input type="text" value="<?php echo $qty1; ?>" name="qty[]" class="s0" size="2"/></td>
+                            <td align="right"><?php printf('$ %8.2f', $price1) ?></td>
+                            <td align="right"><?php printf('$ %8.2f', $qty1 * $price1) ?></td>
                             <td>
                                 <table>
                                     <tr>
@@ -90,9 +104,9 @@
                                 </a>
                             </td>
                             <td> Boston Cream Pie</td>
-                            <td>Qty: <br/><input type="text" value="2" name="qty[]" class="s0" size="2"/></td>
-                            <td align="right"> 5.90</td>
-                            <td align="right"> 11.80</td>
+                            <td>Qty: <br/><input type="text" value="<?php echo $qty2; ?>" name="qty[]" class="s0" size="2"/></td>
+                            <td align="right"><?php printf('$ %8.2f', $price2) ?></td>
+                            <td align="right"><?php printf('$ %8.2f', $qty2 * $price2) ?></td>
                             <td>
                                 <table>
                                     <tr>
@@ -116,9 +130,9 @@
                                 </a>
                             </td>
                             <td> Chocolate Fondue</td>
-                            <td>Qty: <br/><input type="text" value="3" name="qty[]" class="s0" size="2"/></td>
-                            <td align="right"> 3.20</td>
-                            <td align="right"> 9.60</td>
+                            <td>Qty: <br/><input type="text" value="<?php echo $qty3; ?>" name="qty[]" class="s0" size="2"/></td>
+                            <td align="right"><?php printf('$ %8.2f', $price3) ?></td>
+                            <td align="right"><?php printf('$ %8.2f', $qty3 * $price3) ?></td>
                             <td>
                                 <table>
                                     <tr>
@@ -136,7 +150,7 @@
                         </tr>
                         <tr>
                             <th colspan="5">Products Total:</th>
-                            <th colspan="2"> 23.30</th>
+                            <th colspan="2"> <?php printf('$ %10.2f', $total); ?></th>
                         </tr>
                     </table>
 
@@ -160,9 +174,9 @@
             Copyright &copy; 2012 sweetscomplete.com. All rights reserved. <br/>
             <a href="home.html">Home</a> | <a href="about.html">About Us</a> | <a href="products.html">Products</a> | <a
                 href="contact.html">Contact Us</a> <br/>
-			<span class="contact">Tel: +44-1234567890&nbsp;
-			Fax: +44-1234567891&nbsp;
-			Email:sales@sweetscomplete.com</span>
+			<span class="contact">Tel: +44-<?php print $phone; ?>&nbsp;
+			Fax: +44-<?php print $fax; ?>&nbsp;
+			Email:<?php print $email; ?></span>
         </div>
     </div><!-- footer -->
 
