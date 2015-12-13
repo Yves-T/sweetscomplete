@@ -9,7 +9,7 @@ Every lab step is tagged in the git history.
 Go to [PHP mailer on github](https://github.com/Synchro/PHPMailer) and download the zip package. Unzip and rename the
 folder to PHPMailer. Transfer the folder to the linux box and copy the folder to the PEAR folder
 
-    udo cp -avr PHPMailer/ /usr/share/php/PEAR
+    sudo cp -avr PHPMailer/ /usr/share/php/PEAR
 
 You need to point PHP to the pear folder to avoid file not found errors. This is done with:
 
