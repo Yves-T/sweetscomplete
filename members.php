@@ -36,15 +36,15 @@ $linesPerPage = 6;
             </div>
             <div class="right marT10">
                 <b>
-                    <a href="login.html">Login</a> |<a href="members" class="active.html">Our Members</a> |<a
-                        href="cart.html">Shopping Cart</a>
+                    <a href="login.html">Login</a> |<a href="members.php" class="active.html">Our Members</a> |<a
+                        href="cart.php">Shopping Cart</a>
                 </b>
                 <br/>
                 Welcome Guest
             </div>
             <ul class="topmenu">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="products.php">Products</a></li>
                 <li><a href="specials.html">Specials</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
@@ -62,7 +62,7 @@ $linesPerPage = 6;
                 <h2>Our Members</h2>
                 <br/>
 
-                <form name="search" method="get" action="members.html" id="search">
+                <form name="search" method="get" action="members.php" id="search">
                     <input type="text" value="keywords" name="keyword" class="s0"/>
                     <input type="submit" name="search" value="Search Members" class="button marL10"/>
                     <input type="hidden" name="page" value="members"/>
@@ -81,7 +81,7 @@ $linesPerPage = 6;
                     <?php print $view->displayMembers($page, $linesPerPage, $maxMembers, $members->getMembers()); ?>
                 </table>
                 <br/>
-                <a href="addmember.html" class="abutton">&nbsp;&nbsp;&nbsp;Member Sign Up&nbsp;&nbsp;&nbsp;</a>
+                <a href="addmember.php" class="abutton">&nbsp;&nbsp;&nbsp;Member Sign Up&nbsp;&nbsp;&nbsp;</a>
 
             </div>
             <br class="clear-all"/>
@@ -92,7 +92,7 @@ $linesPerPage = 6;
     <div id="footer">
         <div class="footer">
             Copyright &copy; 2012 sweetscomplete.com. All rights reserved. <br/>
-            <a href="home.html">Home</a> | <a href="products.html">Products</a> | <a href="specials.html">Specials</a> |
+            <a href="home.php">Home</a> | <a href="products.php">Products</a> | <a href="specials.html">Specials</a> |
             <a href="contact.html">Contact Us</a> <br/>
 			<span class="contact">Tel: +44-1234567890&nbsp;
 			Fax: +44-1234567891&nbsp;

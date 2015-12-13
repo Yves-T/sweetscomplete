@@ -18,7 +18,7 @@
             </div>
             <div class="right marT10">
                 <b>
-                    <a href="login.html">Login</a> |<a href="members.html">Our Members</a> |<a href="cart.php">Shopping
+                    <a href="login.html">Login</a> |<a href="members.php">Our Members</a> |<a href="cart.php">Shopping
                         Cart</a>
                 </b>
             </div>
