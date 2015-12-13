@@ -1,4 +1,20 @@
-<?php ?>
+<?php
+
+require './View/View.php';
+$view = new View();
+require './Model/Members.php';
+$members = new Members();
+
+$maxMembers = count($members->getMembers());
+
+// use the "ternary operator" operator to check if the page is set
+$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 0;
+// use the "ternary operator" to check to see if page is 0
+$prev = ($page == 0) ? 0 : $page - 1;
+$next = $page + 1;
+$linesPerPage = 6;
+
+?>
 <!DOCTYPE HTML>
 <!-- this file has the overall look and feel of the website -->
 <html>
@@ -52,9 +68,9 @@
                     <input type="hidden" name="page" value="members"/>
                 </form>
                 <br/><br/>
-                <a class="pages" href="members.html">&lt;prev</a>
+                <a class="pages" href="members.php?page=<?php print $prev ?>">&lt;prev</a>
                 &nbsp;|&nbsp;
-                <a class="pages" href="members.html">next&gt;</a>
+                <a class="pages" href="members.php?page=<?php print $next ?>">next&gt;</a>
                 <table>
                     <tr>
                         <th>Member ID</th>
@@ -62,78 +78,7 @@
                         <th>City</th>
                         <th>Email</th>
                     </tr>
-                    <tr>
-                        <td>00000062</td>
-                        <td><img src="images/m.gif"/> Aileen Duncan</td>
-                        <td>Needmore</td>
-                        <td><img src="images/e.gif"/> aileen.duncan@westnet.net</td>
-                    </tr>
-                    <tr>
-                        <td>00000047</td>
-                        <td><img src="images/m.gif"/> Alonzo Sullivan</td>
-                        <td>Credit</td>
-                        <td><img src="images/e.gif"/> alonzo.sullivan@fastmedia.net</td>
-                    </tr>
-                    <tr>
-                        <td>00000009</td>
-                        <td><img src="images/m.gif"/> Armando Barlow</td>
-                        <td>Revenge</td>
-                        <td><img src="images/e.gif"/> armando.barlow@cablecom.com</td>
-                    </tr>
-                    <tr>
-                        <td>00000078</td>
-                        <td><img src="images/m.gif"/> Blanca Le</td>
-                        <td>Diagonal</td>
-                        <td><img src="images/e.gif"/> blanca.le@telecom.com</td>
-                    </tr>
-                    <tr>
-                        <td>00000008</td>
-                        <td><img src="images/m.gif"/> Brian Crawford</td>
-                        <td>Honk Hill</td>
-                        <td><img src="images/e.gif"/> brian.crawford@fastcom.net</td>
-                    </tr>
-                    <tr>
-                        <td>00000035</td>
-                        <td><img src="images/m.gif"/> Camille Perez</td>
-                        <td>Honduras</td>
-                        <td><img src="images/e.gif"/> camille.perez@northnet.net</td>
-                    </tr>
-                    <tr>
-                        <td>00000024</td>
-                        <td><img src="images/m.gif"/> Cecelia Case</td>
-                        <td>Dogpatch</td>
-                        <td><img src="images/e.gif"/> cecelia.case@southmedia.net</td>
-                    </tr>
-                    <tr>
-                        <td>00000038</td>
-                        <td><img src="images/m.gif"/> Celeste Justice</td>
-                        <td>Manumuskin</td>
-                        <td><img src="images/e.gif"/> celeste.justice@southcom.com</td>
-                    </tr>
-                    <tr>
-                        <td>00000053</td>
-                        <td><img src="images/m.gif"/> Chris Bradley</td>
-                        <td>Knob Lick</td>
-                        <td><img src="images/e.gif"/> chris.bradley@cablemedia.com</td>
-                    </tr>
-                    <tr>
-                        <td>00000022</td>
-                        <td><img src="images/m.gif"/> Coleen Walker</td>
-                        <td>Chittyville</td>
-                        <td><img src="images/e.gif"/> coleen.walker@fastmedia.com</td>
-                    </tr>
-                    <tr>
-                        <td>00000001</td>
-                        <td><img src="images/m.gif"/> Conrad Perry</td>
-                        <td>Birdseye</td>
-                        <td><img src="images/e.gif"/> conrad.perry@fastmedia.com</td>
-                    </tr>
-                    <tr>
-                        <td>00000003</td>
-                        <td><img src="images/m.gif"/> Darrel Roman</td>
-                        <td>Flushing</td>
-                        <td><img src="images/e.gif"/> darrel.roman@southcom.net</td>
-                    </tr>
+                    <?php print $view->displayMembers($page, $linesPerPage, $maxMembers, $members->getMembers()); ?>
                 </table>
                 <br/>
                 <a href="addmember.html" class="abutton">&nbsp;&nbsp;&nbsp;Member Sign Up&nbsp;&nbsp;&nbsp;</a>
