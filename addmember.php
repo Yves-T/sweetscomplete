@@ -1,4 +1,5 @@
 <?php
+$mailStatus = '';
 $data = array(
     'email' => 'email',
     'firstname' => 'firstname',
@@ -53,6 +54,38 @@ if (isset($_POST['data'])) {
         $error['telephone'] = '<b class="error">Telephone numbers should be in form +CC AAA-CCC-DDDD</b>';
     }
 
+    // check to see if form valid
+    $isValid = true;
+    foreach ($error as $value) {
+        if ($value) {
+            $isValid = false;
+            break;
+        }
+    }
+    if ($isValid) {
+        ini_set('include_path', get_include_path() . PATH_SEPARATOR . '/usr/share/php/PEAR');
+        require_once('PHPMailer/class.phpmailer.php');
+        $address = "";
+        $newName = $data['firstname'] . ' ' . $data['lastname'];
+        $mail = new PHPMailer(); // defaults to using php "mail()"
+        $body = 'Welcome to SweetsComplete ' . $newName . '!'
+            . '<br/> To confirm your membership just reply to this email and we\'ll do the rest.'
+            . '<br/>Happy eating!';
+        $mail->AddReplyTo($address, "SweetsComplete");
+        $mail->SetFrom($address, 'SweetsComplete');
+        $mail->AddAddress($data['email'], $newName);
+        $mail->Subject = "SweetsComplete Membership Confirmation";
+        $mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
+        $mail->MsgHTML($body);
+
+        if (!$mail->Send()) {
+            $mailStatus = "Mailer Error: " . $mail->ErrorInfo;
+        } else {
+            $mailStatus = "Confirmation Email Message sent!";
+        }
+
+    }
+
 }
 ?>
 <!DOCTYPE HTML>
@@ -67,6 +100,10 @@ if (isset($_POST['data'])) {
     <style>
         .error {
             color: red;
+        }
+
+        .confirm {
+            color: green;
         }
     </style>
 </head>
@@ -107,6 +144,10 @@ if (isset($_POST['data'])) {
                 <br/>
 
                 <b>Please enter your information.</b><br/><br/>
+                <br/>
+                <br/>
+                <?php if ($mailStatus) print '<br/><b class="confirm">' . $mailStatus . '</b> <br/>' ?>
+                <br/>
 
                 <form action="addmember.php" method="post">
                     <p>
