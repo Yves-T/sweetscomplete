@@ -36,7 +36,7 @@ $linesPerPage = 6;
             </div>
             <div class="right marT10">
                 <b>
-                    <a href="login.html">Login</a> |<a href="members.php" class="active.html">Our Members</a> |<a
+                    <a href="login.php">Login</a> |<a href="members.php" class="active.php">Our Members</a> |<a
                         href="cart.php">Shopping Cart</a>
                 </b>
                 <br/>
@@ -45,8 +45,8 @@ $linesPerPage = 6;
             <ul class="topmenu">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="products.php">Products</a></li>
-                <li><a href="specials.html">Specials</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="specials.php">Specials</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
             </ul>
             <br>
 
@@ -92,8 +92,8 @@ $linesPerPage = 6;
     <div id="footer">
         <div class="footer">
             Copyright &copy; 2012 sweetscomplete.com. All rights reserved. <br/>
-            <a href="home.php">Home</a> | <a href="products.php">Products</a> | <a href="specials.html">Specials</a> |
-            <a href="contact.html">Contact Us</a> <br/>
+            <a href="home.php">Home</a> | <a href="products.php">Products</a> | <a href="specials.php">Specials</a> |
+            <a href="contact.php">Contact Us</a> <br/>
 			<span class="contact">Tel: +44-1234567890&nbsp;
 			Fax: +44-1234567891&nbsp;
 			Email:sales@sweetscomplete.com</span>
