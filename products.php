@@ -280,7 +280,7 @@
 			Fax: +44-1234567891&nbsp;
 			Email:sales@sweetscomplete.com</span>
         </div>
-        div><!-- footer -->
+        </div><!-- footer -->
 
     </div><!-- wrapper -->
 
