@@ -69,16 +69,56 @@ class View
             $output .= '</a>';
             $output .= '</div>';
             $output .= '<div class="detail">';
-            $output .= '<p class="name"><a href="detail.html">'
-                . $products[$x]['title']
+            $output .= '<p class="name">'
+                . '<a href="detail.php?id='
+                . $products[$x + $offset]['product_id']
+                . '">'
+                . $products[$x + $offset]['title']
                 . '</a></p>';
-            $output .= '<p class="view"><a href="detail.html">purchase</a> | <a href="detail.html">view';
-            $output .= 'details';
-            $output .= '>></a></p>';
+            $output .= '<p class="view">';
+            $output .= '<a href="detail.php?id='
+                . $products[$x + $offset]['product_id']
+                . '">purchase</a> | '
+                . '<a href="detail.php?id='
+                . $products[$x + $offset]['product_id']
+                . '">view details>></a></p>';
             $output .= '</div>';
             $output .= '</li>';
 
         }
+        return $output;
+    }
+
+    public function displayDetail($details)
+    {
+        $output = '';
+
+
+        $output .= '<div class="images">';
+        $output .= '<a href="#">';
+        $output .= '<img src="images/'
+            . $details['link']
+            . '.scale_20.JPG" alt="'
+            . $details['title']
+            . '" width="350" />';
+        $output .= '</a>';
+        $output .= '</div>';
+        $output .= '<div class="details">';
+        $output .= '<h3>' . $details['sku'] . '</h3><br/>';
+        $output .= '<h1 class="name"><b>' . $details['title'] . '</b></h1><br/>';
+        $output .= '<p class="desc">' . $details['description'];
+        $output .= '</p>';
+        $output .= '<br/>';
+        $output .= '<p class="view"><b>Price: ' . sprintf('%8.2f', $details['price']) . '</b></p><br/>';
+        $output .= '<form action="purchase.php" method="GET">';
+        $output .= '<p class="view">';
+        $output .= '<label>Qty:</label> <input type="text" value="1" name="qty" class="s0" size="2" />';
+        $output .= '<input type="submit" name="purchase" value="Buy this item" class="button"/>';
+        $output .= '<input type="hidden" name="price" value="' . $details['price'] . '" />';
+        $output .= '<input type="hidden" name="productID" value="' . $details['product_id'] . '" />';
+        $output .= '</p>';
+        $output .= '</form>';
+        $output .= '</div>';
         return $output;
     }
 

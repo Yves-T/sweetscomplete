@@ -1,4 +1,14 @@
-<?php ?>
+<?php
+require './View/View.php';
+$view = new View();
+require './Model/Products.php';
+$products = new Products();
+
+$id = (isset($_GET['id'])) ? (int)$_GET['id'] : 1;
+
+$details = $products->getDetailsById($id);
+
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -44,33 +54,8 @@
                 <h2>Product Details</h2>
                 <br/>
 
-                <div class="images">
-                    <a href="#">
-                        <img src="images/430_3150132.scale_20.JPG" alt=" Chocolate Angelfood Cupcakes" width="350"/>
-                    </a>
-                </div>
-                <div class="details">
-                    <h3>SKU: C3000</h3><br/>
+                <?php print $view->displayDetail($details); ?>
 
-                    <h1 class="name"><b> Chocolate Angelfood Cupcakes</b></h1><br/>
-
-                    <p class="desc">Id ius detracto constituam, his possit platonem ne. Mel ad dolorum vivendum, vocent
-                        iisque salutandi in sit, nobis omnes eum ut. Nam simul tincidunt ei, in viris fabulas eos. Te
-                        per animal impetus, prompta platonem eloquentiam ea usu, efficiendi appellantur has in.
-                    </p>
-                    <br/>
-
-                    <p class="view"><b>Price: £0.30</b></p><br/>
-
-                    <form action="purchase.html" method="POST">
-                        <p class="view">
-                            <label>Qty:</label> <input type="text" value="1" name="qty" class="s0" size="2"/>
-                            <input type="submit" name="purchase" value="Buy this item" class="button"/>
-                            <input type="hidden" name="price" value="0.30"/>
-                            <input type="hidden" name="productID" value="3"/>
-                        </p>
-                    </form>
-                </div>
             </div><!-- product-list -->
             <br class="clear-all"/>
         </div><!-- content -->
